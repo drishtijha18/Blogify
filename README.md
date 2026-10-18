@@ -1,112 +1,155 @@
-# 🚀 blog-app (QuickBlog FullStack)
+# 📝 Blogify (QuickBlog)
 
-A modern, feature-rich blogging platform built with the **MERN Stack** (MongoDB, Express, React, Node.js). This application enables users to create, manage, and publish blogs with a premium UI, dark mode support, and comprehensive dashboard analytics.
+A modern, high-performance blogging platform built with the **MERN Stack** (MongoDB, Express, React 19, Node.js), powered by **Tailwind CSS v4** and **Vite**. Features a clean glassmorphism UI, interactive rich-text editor, admin moderation suite, and optional AI-assisted writing powered by Google Gemini.
+
+---
 
 ## ✨ Features
 
-### 🎨 User Interface & Experience
-*   **Premium Design**: Modern, glassmorphism-inspired UI with smooth gradients and transitions.
-*   **Dark Mode**: System-wide dark mode with a persistent toggle and beautiful color palettes.
-*   **Responsive**: Fully optimized for customized experience on Desktop, Tablet, and Mobile.
-*   **Rich Text Editor**: Integrated editor for creating beautiful blog posts.
+- **⚡ Blazing Fast Client**: Built with **React 19** and **Vite** with instant HMR and optimized production bundles.
+- **🎨 Modern Aesthetic**: Responsive design styled with **Tailwind CSS v4** and fluid micro-interactions with **Framer Motion**.
+- **✍️ Rich Text Editing**: Quill editor integration for formatted articles, headings, and code blocks.
+- **🔍 Real-Time Filter & Search**: Search blogs by title and filter across categories (Technology, Startup, Lifestyle, Finance).
+- **🛡️ Admin Suite**:
+  - Secure JWT authentication with protected admin routes.
+  - Analytics dashboard tracking total blogs, comments, and drafts.
+  - Full CRUD operations with publish/unpublish toggles.
+  - Moderation workflow for public comments.
+- **🤖 AI Integration**: Integrated with Google Gemini Flash for instant blog drafting from topics and prompts.
+- **🖼️ Image Optimization**: Cloud asset handling and automated compression via ImageKit.
+- **🌱 Instant Database Seeder**: One-command sample dataset to kickstart local testing.
 
-### 🔐 Authentication & User Profile
-*   **Secure Auth**: JWT-based authentication with properly hashed passwords (bcrypt).
-*   **Profile Management**: Update name, email, and upload profile photos (integrated with **ImageKit**).
-*   **Safety**: Protected routes ensure only authenticated users access admin features.
+---
 
-### 📊 Admin Dashboard
-*   **Real-time Stats**: View total published blogs, comments, and drafts at a glance.
-*   **Blog Management**: Create, edit, delete, and toggle publish status of blogs.
-*   **Comment System**: distinct approval workflow for comments. Approve or delete user comments.
-*   **Search & Filter**: dedicated search functionality to find blogs easily.
-
-## 🛠️ Tech Stack
-
-### Frontend
-*   **React.js** (Vite)
-*   **Tailwind CSS** (Styling & Dark Mode)
-*   **Context API** (State Management)
-*   **Axios** (API Requests)
-*   **React Hot Toast** (Notifications)
-
-### Backend
-*   **Node.js & Express.js**
-*   **MongoDB & Mongoose** (Database)
-*   **JWT & Bcrypt** (Auth security)
-*   **Multer** (File handling)
-*   **ImageKit** (Image storage & optimization)
-
-## ⚙️ Installation & Setup
-
-Follow these steps to run the project locally.
-
-### 1. Clone the Repository
-```bash
-git clone <repository-url>
-cd QuickBlog-FullStack
-```
-
-### 2. Backend Setup
-Navigate to the server directory and install dependencies:
-```bash
-cd server
-npm install
-```
-
-Create a `.env` file in the `server` directory with the following variables:
-```env
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret_key
-IMAGEKIT_PUBLIC_KEY=your_imagekit_public_key
-IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
-IMAGEKIT_URL_ENDPOINT=your_imagekit_url_endpoint
-```
-
-Start the backend server:
-```bash
-npm start
-```
-
-### 3. Frontend Setup
-Open a new terminal, navigate to the client directory and install dependencies:
-```bash
-cd client
-npm install
-```
-
-Start the frontend development server:
-```bash
-npm run dev
-```
-
-The application will be available at `http://localhost:5173`.
-
-## 📂 Project Structure
+## 🏗️ Project Architecture
 
 ```
-QuickBlog-FullStack/
-├── client/                 # Frontend React Application
+Blogify/
+├── client/                     # Frontend (React 19 + Vite + Tailwind v4)
 │   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── context/        # App state (Auth, Theme)
-│   │   ├── pages/          # Page components (Home, Dashboard, etc.)
-│   │   └── assets/         # Images and icons
-│   └── ...
-├── server/                 # Backend Node.js Application
-│   ├── controllers/        # Logic for routes
-│   ├── models/             # Mongoose database models
-│   ├── routes/             # API endpoints
-│   ├── middleware/         # Auth & Upload middleware
-│   └── ...
+│   │   ├── assets/             # Icons, illustrations, and static media
+│   │   ├── components/         # Reusable UI components & admin controls
+│   │   ├── context/            # React Context (global state & auth tokens)
+│   │   └── pages/              # Route views (Home, Blog view, Admin views)
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server/                     # Backend API (Node.js + Express + Mongoose)
+│   ├── configs/                # DB, Gemini, and ImageKit configurations
+│   ├── controllers/            # Admin and Blog business logic
+│   ├── middleware/             # JWT auth & Multer file upload
+│   ├── models/                 # Mongoose schemas (Blog, Comment)
+│   ├── routes/                 # Express API routes
+│   ├── scripts/                # Database seed utility
+│   ├── package.json
+│   └── server.js
 └── README.md
 ```
 
-## 🤝 Contributing
+---
 
-Contributions are welcome! Please fork the repository and create a pull request for any feature improvements or bug fixes.
+## 🚀 Getting Started
+
+### 1. Prerequisites
+- **Node.js** (v18+)
+- **npm** (v9+)
+- **MongoDB** running locally on `mongodb://127.0.0.1:27017` or a MongoDB Atlas URI
+
+### 2. Clone and Install Dependencies
+
+```bash
+git clone https://github.com/drishtijha18/Blogify.git
+cd Blogify
+
+# Install client dependencies
+cd client
+npm install
+
+# Install server dependencies
+cd ../server
+npm install
+```
+
+### 3. Environment Configuration
+
+#### Backend (`server/.env`)
+Copy `server/.env.example` to `server/.env`:
+```env
+PORT=3000
+JWT_SECRET=secret@2025
+ADMIN_EMAIL=admin@example.com
+ADMIN_PASSWORD=greatstack
+MONGODB_URI=mongodb://127.0.0.1:27017
+
+# Optional (for ImageKit and AI features):
+IMAGEKIT_PUBLIC_KEY=your_key
+IMAGEKIT_PRIVATE_KEY=your_key
+IMAGEKIT_URL_ENDPOINT=your_endpoint
+GEMINI_API_KEY=your_key
+```
+
+#### Frontend (`client/.env`)
+Copy `client/.env.example` to `client/.env`:
+```env
+VITE_BASE_URL=http://localhost:3000
+```
+
+### 4. Seed Sample Data (Optional)
+
+Populate your local MongoDB database with rich sample blog posts:
+```bash
+cd server
+npm run seed
+```
+
+### 5. Run the Application
+
+Start the backend API server:
+```bash
+cd server
+npm start        # runs node server.js on port 3000
+# or: npm run server (for nodemon auto-restart)
+```
+
+In a separate terminal, start the frontend dev server:
+```bash
+cd client
+npm run dev      # runs Vite on port 5173 / 5174
+```
+
+Visit the app at **[http://localhost:5174](http://localhost:5174)** or **[http://localhost:5173](http://localhost:5173)**.
 
 ---
-*Built with ❤️ by Drishti Jha*
-# Blogify
+
+## 🔐 Admin Dashboard Access
+
+- **Route:** `/admin`
+- **Email:** `admin@example.com`
+- **Password:** `greatstack`
+
+---
+
+## 📡 API Endpoints
+
+| Method | Endpoint | Description | Auth Required |
+|---|---|---|:---:|
+| `GET` | `/` | API health check | No |
+| `POST` | `/api/admin/login` | Admin authentication & JWT token generation | No |
+| `GET` | `/api/admin/blogs` | Get all blogs for dashboard listing | Yes (Admin) |
+| `GET` | `/api/admin/dashboard` | Aggregated dashboard metrics | Yes (Admin) |
+| `GET` | `/api/admin/comments` | List all user comments for moderation | Yes (Admin) |
+| `POST` | `/api/admin/approve-comment` | Approve comment for public display | Yes (Admin) |
+| `POST` | `/api/admin/delete-comment` | Delete inappropriate comment | Yes (Admin) |
+| `GET` | `/api/blog/all` | Get all published blogs | No |
+| `GET` | `/api/blog/:blogId` | Get single blog by ID | No |
+| `POST` | `/api/blog/add` | Create new blog post with image | Yes (Admin) |
+| `POST` | `/api/blog/delete` | Delete blog post | Yes (Admin) |
+| `POST` | `/api/blog/toggle-publish` | Toggle draft / published status | Yes (Admin) |
+| `POST` | `/api/blog/add-comment` | Submit comment for review | No |
+| `POST` | `/api/blog/comments` | Fetch approved comments for a blog | No |
+| `POST` | `/api/blog/generate` | Generate draft content via Gemini AI | Yes (Admin) |
+
+---
+
+## 📄 License
+ISC License.
