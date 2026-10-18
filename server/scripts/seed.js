@@ -48,7 +48,7 @@ const sampleBlogs = [
 const seedDB = async () => {
   try {
     const mongoUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017";
-    await mongoose.connect(`${mongoUri}/quickblog`);
+    await mongoose.connect(mongoUri, { dbName: 'quickblog' });
     console.log("Connected to MongoDB for seeding...");
 
     const existingCount = await Blog.countDocuments();
