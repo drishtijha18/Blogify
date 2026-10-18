@@ -7,31 +7,26 @@ import Dashboard from './pages/admin/Dashboard'
 import AddBlog from './pages/admin/AddBlog'
 import ListBlog from './pages/admin/ListBlog'
 import Comments from './pages/admin/Comments'
-import Profile from './pages/admin/Profile'
 import Login from './components/admin/Login'
-import Signup from './components/admin/Signup'
 import 'quill/dist/quill.snow.css'
-import { Toaster } from 'react-hot-toast'
+import {Toaster} from 'react-hot-toast'
 import { useAppContext } from './context/AppContext'
 
 const App = () => {
 
-  const { token } = useAppContext() // token is used to check if the user is logged in or not
+  const {token} = useAppContext()
 
-  return ( 
-    <div> 
-      <Toaster />  {/*Toaster is used to show notifications */}
+  return (
+    <div>
+      <Toaster/>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/blog/:id' element={<Blog />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/admin' element={token ? <Layout /> : <Login />}>
-          <Route index element={<Dashboard />} />
-          <Route path='addBlog' element={<AddBlog />} />
-          <Route path='listBlog' element={<ListBlog />} />
-          <Route path='comments' element={<Comments />} />
-          <Route path='profile' element={<Profile />} />
+        <Route path='/' element={<Home/>} />
+        <Route path='/blog/:id' element={<Blog/>} />
+        <Route path='/admin' element={token ? <Layout/> : <Login/>}>
+          <Route index element={<Dashboard/>}/>
+          <Route path='addBlog' element={<AddBlog/>}/>
+          <Route path='listBlog' element={<ListBlog/>}/>
+          <Route path='comments' element={<Comments/>}/>
         </Route>
       </Routes>
     </div>

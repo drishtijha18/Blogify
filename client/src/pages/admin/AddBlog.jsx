@@ -1,6 +1,4 @@
-// allows admins to add a new blog post
 import React, { useEffect, useRef, useState } from 'react'
-// we imported some hooks and libraries
 import { assets, blogCategories } from '../../assets/assets'
 import Quill from 'quill';
 import { useAppContext } from '../../context/AppContext';
